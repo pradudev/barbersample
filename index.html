@@ -1,27 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
-    <!-- Link to an external CSS stylesheet (Optional) -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CUTLAB BARBERS | Melbourne</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#090909;
+    border-bottom:1px solid #292929;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    font-size:34px;
+}
+
+.logo-text h2{
+    font-size:20px;
+    letter-spacing:2px;
+}
+
+.logo-text span{
+    color:#c8a45d;
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#c8a45d;
+}
+
+.hero{
+    min-height:88vh;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1800&q=90");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding:80px 8%;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.small-title{
+    color:#c8a45d;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(50px,8vw,100px);
+    line-height:.9;
+    margin-bottom:25px;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:18px;
+    line-height:1.7;
+    max-width:600px;
+}
+
+.buttons{
+    margin-top:32px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 25px;
+    border:1px solid #c8a45d;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.btn.gold{
+    background:#c8a45d;
+    color:#080808;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.info-bar{
+    background:#c8a45d;
+    color:#080808;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    text-align:center;
+}
+
+.info-box{
+    padding:25px;
+    border-right:1px solid rgba(0,0,0,.2);
+}
+
+.info-box:last-child{
+    border-right:none;
+}
+
+.info-box h3{
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.info-box p{
+    font-size:14px;
+}
+
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#c8a45d;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.section-title h2{
+    font-size:45px;
+    margin-top:10px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.service{
+    background:#151515;
+    padding:35px;
+    border:1px solid #292929;
+    transition:.3s;
+}
+
+.service:hover{
+    border-color:#c8a45d;
+    transform:translateY(-5px);
+}
+
+.service-icon{
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+.service h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.service p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.price{
+    color:#c8a45d;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.about{
+    background:#111;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    height:550px;
+    object-fit:cover;
+}
+
+.about-text span{
+    color:#c8a45d;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.about-text h2{
+    font-size:48px;
+    margin:15px 0 25px;
+}
+
+.about-text p{
+    color:#aaa;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+.hours-section{
+    background:#111;
+}
+
+.hours-card{
+    max-width:800px;
+    margin:auto;
+    background:#151515;
+    border:1px solid #292929;
+}
+
+.day{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 25px;
+    border-bottom:1px solid #292929;
+}
+
+.day:last-child{
+    border-bottom:none;
+}
+
+.day span:last-child{
+    color:#c8a45d;
+}
+
+.contact{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.contact-card{
+    background:#151515;
+    border:1px solid #292929;
+    padding:35px;
+    text-align:center;
+}
+
+.contact-card .icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.contact-card h3{
+    margin-bottom:10px;
+}
+
+.contact-card p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.social{
+    text-align:center;
+    background:#c8a45d;
+    color:#080808;
+}
+
+.social h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.social p{
+    margin-bottom:25px;
+}
+
+.social a{
+    display:inline-block;
+    background:#080808;
+    color:#fff;
+    padding:15px 25px;
+    font-weight:bold;
+}
+
+footer{
+    background:#070707;
+    padding:40px 8%;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+    color:#777;
+}
+
+footer strong{
+    color:#fff;
+}
+
+footer span{
+    color:#c8a45d;
+}
+
+.ai-button{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:none;
+    background:#c8a45d;
+    color:#000;
+    font-size:28px;
+    cursor:pointer;
+    z-index:999;
+    box-shadow:0 5px 25px rgba(0,0,0,.5);
+}
+
+.ai-box{
+    position:fixed;
+    right:25px;
+    bottom:100px;
+    width:330px;
+    background:#151515;
+    border:1px solid #c8a45d;
+    padding:25px;
+    display:none;
+    z-index:998;
+    box-shadow:0 10px 40px rgba(0,0,0,.6);
+}
+
+.ai-box h3{
+    margin-bottom:10px;
+}
+
+.ai-box p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.ai-options{
+    display:grid;
+    gap:8px;
+    margin-top:15px;
+}
+
+.ai-options button{
+    background:#222;
+    border:1px solid #333;
+    color:white;
+    padding:10px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.ai-options button:hover{
+    border-color:#c8a45d;
+}
+
+#aiAnswer{
+    margin-top:15px;
+    color:#c8a45d;
+    font-size:14px;
+}
+
+.price-popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.popup-content{
+    background:#151515;
+    border:1px solid #c8a45d;
+    max-width:700px;
+    width:100%;
+    padding:20px;
+    position:relative;
+}
+
+.popup-content img{
+    width:100%;
+    max-height:75vh;
+    object-fit:contain;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:30px;
+    cursor:pointer;
+    color:#c8a45d;
+}
+
+.price-btn{
+    margin-top:25px;
+    background:#c8a45d;
+    color:#000;
+    border:none;
+    padding:15px 25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:800px){
+
+    header{
+        padding:15px 5%;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        min-height:80vh;
+        padding:60px 6%;
+    }
+
+    .info-bar{
+        grid-template-columns:1fr;
+    }
+
+    .info-box{
+        border-right:none;
+        border-bottom:1px solid rgba(0,0,0,.2);
+    }
+
+    .services,
+    .contact{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .about img{
+        height:400px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:420px;
+    }
+
+    section{
+        padding:70px 6%;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .ai-box{
+        right:15px;
+        left:15px;
+        width:auto;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
+<header>
 
-    <main>
-        <p>This is a sample paragraph. You can edit this file to add your own text, images, and links.</p>
-    </main>
+    <div class="logo">
+        <div class="logo-icon">💈</div>
 
-    <footer>
-        <p>&copy; 2026 My Website</p>
-    </footer>
+        <div class="logo-text">
+            <h2>CUTLAB</h2>
+            <span>BARBERS</span>
+        </div>
+    </div>
 
-    <!-- Link to an external JavaScript file (Optional) -->
-    <script src="script.js"></script>
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#hours">HOURS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            PRECISION CUTS • CLEAN FADES
+        </div>
+
+        <h1>
+            CUTLAB<br>
+            BARBERS
+        </h1>
+
+        <p>
+            Modern barbering with classic technique.
+            Fresh fades, sharp cuts and clean finishes
+            in the heart of Melbourne.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn gold" href="#services">
+                VIEW SERVICES
+            </a>
+
+            <a class="btn" href="tel:+61391234567">
+                CALL (03) 9123 4567
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="info-bar">
+
+    <div class="info-box">
+        <h3>LOCATION</h3>
+        <p>42 Kingsway Street, Melbourne VIC</p>
+    </div>
+
+    <div class="info-box">
+        <h3>OPENING HOURS</h3>
+        <p>Mon–Sat • 9:00 AM – 6:00 PM</p>
+    </div>
+
+    <div class="info-box">
+        <h3>BOOKINGS</h3>
+        <p>Walk-ins & appointments welcome</p>
+    </div>
+
+</div>
+
+
+<section id="services">
+
+    <div class="section-title">
+        <span>WHAT WE DO</span>
+        <h2>OUR SERVICES</h2>
+    </div>
+
+    <div class="services">
+
+        <div class="service">
+            <div class="service-icon">✂️</div>
+            <h3>Classic Cut</h3>
+            <p>
+                A clean, sharp haircut finished with
+                professional styling.
+            </p>
+            <div class="price">$35</div>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">💈</div>
+            <h3>Skin Fade</h3>
+            <p>
+                Smooth skin fade with detailed blending
+                and a crisp finish.
+            </p>
+            <div class="price">$45</div>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🔥</div>
+            <h3>Cut + Fade</h3>
+            <p>
+                Full haircut, fade and styling for
+                a complete fresh look.
+            </p>
+            <div class="price">$50</div>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🧔</div>
+            <h3>Beard Trim</h3>
+            <p>
+                Shape, clean-up and detailed beard
+                finishing.
+            </p>
+            <div class="price">$25</div>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">⚡</div>
+            <h3>Kids Cut</h3>
+            <p>
+                Clean and stylish cuts for younger
+                clients.
+            </p>
+            <div class="price">$30</div>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">👑</div>
+            <h3>Premium Package</h3>
+            <p>
+                Cut, fade, beard trim and complete
+                styling experience.
+            </p>
+            <div class="price">$65</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=90">
+
+    <div class="about-text">
+
+        <span>ABOUT CUTLAB</span>
+
+        <h2>BUILT FOR THE FRESH CUT.</h2>
+
+        <p>
+            CUTLAB BARBERS is a modern Melbourne barber shop
+            focused on clean fades, sharp cuts and attention
+            to detail.
+        </p>
+
+        <p>
+            Whether you're after a classic style or something
+            completely new, our barbers focus on creating a
+            clean finish every time.
+        </p>
+
+        <a class="btn gold" href="#contact">
+            FIND US
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="gallery">
+
+    <div class="section-title">
+        <span>OUR WORK</span>
+        <h2>THE GALLERY</h2>
+    </div>
+
+    <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?auto=format&fit=crop&w=1000&q=90">
+
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=90">
+
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=90">
+
+        <img src="https://images.unsplash.com/photo-1593702295094-aea639e95c9d?auto=format&fit=crop&w=1000&q=90">
+
+        <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1000&q=90">
+
+        <img src="https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?auto=format&fit=crop&w=1000&q=90">
+
+    </div>
+
+</section>
+
+
+<section class="hours-section" id="hours">
+
+    <div class="section-title">
+        <span>WHEN TO VISIT</span>
+        <h2>OPENING HOURS</h2>
+    </div>
+
+    <div class="hours-card">
+
+        <div class="day">
+            <span>Monday</span>
+            <span>9:00 AM – 5:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Tuesday</span>
+            <span>9:00 AM – 6:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Wednesday</span>
+            <span>9:00 AM – 6:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Thursday</span>
+            <span>9:00 AM – 7:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Friday</span>
+            <span>9:00 AM – 7:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Saturday</span>
+            <span>9:00 AM – 6:00 PM</span>
+        </div>
+
+        <div class="day">
+            <span>Sunday</span>
+            <span>10:00 AM – 4:00 PM</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="contact">
+
+    <div class="section-title">
+        <span>COME THROUGH</span>
+        <h2>CONTACT US</h2>
+    </div>
+
+    <div class="contact">
+
+        <div class="contact-card">
+            <div class="icon">📍</div>
+            <h3>ADDRESS</h3>
+            <p>
+                42 Kingsway Street<br>
+                Melbourne VIC 3000
+            </p>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon">📞</div>
+            <h3>PHONE</h3>
+            <p>
+                <a href="tel:+61391234567">
+                    (03) 9123 4567
+                </a>
+            </p>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon">💰</div>
+            <h3>PRICE RANGE</h3>
+            <p>
+                Moderate pricing<br>
+                Walk-ins welcome
+            </p>
+        </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+
+        <button class="price-btn" onclick="openPrice()">
+            VIEW PRICE LIST
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="social">
+
+    <h2>FOLLOW CUTLAB</h2>
+
+    <p>
+        Follow us for fresh cuts, new styles and shop updates.
+    </p>
+
+    <a href="#">
+        INSTAGRAM @CUTLABBARBERS
+    </a>
+
+</section>
+
+
+<footer>
+
+    <div>
+        <strong>💈 CUTLAB BARBERS</strong>
+        <br>
+        <small>
+            42 Kingsway Street, Melbourne VIC 3000
+        </small>
+    </div>
+
+    <div>
+        Developed by <span>Devansh Chouhan</span>
+    </div>
+
+</footer>
+
+
+<button class="ai-button" onclick="toggleAI()">
+    🤖
+</button>
+
+
+<div class="ai-box" id="aiBox">
+
+    <h3>💈 CUTLAB ASSISTANT</h3>
+
+    <p>
+        Hey! What can I help you with?
+    </p>
+
+    <div class="ai-options">
+
+        <button onclick="answer('Our skin fade is $45.')">
+            💈 Skin fade price
+        </button>
+
+        <button onclick="answer('We are open Monday to Saturday from 9 AM.')">
+            🕐 Opening hours
+        </button>
+
+        <button onclick="answer('We are located at 42 Kingsway Street, Melbourne.')">
+            📍 Location
+        </button>
+
+        <button onclick="answer('You can call us on (03) 9123 4567.')">
+            📞 Contact
+        </button>
+
+    </div>
+
+    <div id="aiAnswer"></div>
+
+</div>
+
+
+<div class="price-popup" id="pricePopup">
+
+    <div class="popup-content">
+
+        <span class="close" onclick="closePrice()">×</span>
+
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=90">
+
+    </div>
+
+</div>
+
+
+<script>
+
+function toggleAI(){
+
+    const box = document.getElementById("aiBox");
+
+    if(box.style.display === "block"){
+        box.style.display = "none";
+    }else{
+        box.style.display = "block";
+    }
+
+}
+
+function answer(text){
+
+    document.getElementById("aiAnswer").innerText = text;
+
+}
+
+function openPrice(){
+
+    document.getElementById("pricePopup").style.display = "flex";
+
+}
+
+function closePrice(){
+
+    document.getElementById("pricePopup").style.display = "none";
+
+}
+
+window.onclick = function(event){
+
+    const popup = document.getElementById("pricePopup");
+
+    if(event.target === popup){
+        popup.style.display = "none";
+    }
+
+}
+
+</script>
+
 </body>
 </html>
